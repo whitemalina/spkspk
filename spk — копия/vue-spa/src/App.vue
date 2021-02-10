@@ -99,57 +99,44 @@
             <div class="new-request">
                 <button class='new-r open-modal'  data-modal="#modal1">Добавить новую заявку <img class="plus2" src="assets/img/plus 2.svg" alt=""></button>
             </div>
-            <div class="main-request">
-                <div class="main-request-item">
-                    <p>16.07.2021</p>
-                </div>
-                <div class="main-request-item">
-                    <p>Иванов И.И</p>
-                </div>
-                <div class="main-request-item">
-                    <p>44</p>
-                </div>
-                <div class="main-request-item">
-                    <p>Компьютер 3 не включается. Пропал интернет</p>
-                </div>
-                <div class="main-request-item-progress">
-                    <p>Выполняется </p>
-                    <img class="rot" src="assets/img/progress.svg" alt="">
-                </div>
-            </div>
+        <router-view
+                v-for="post in posts"
+                v-bind="post"
+                :key="post.id"
+        ></router-view>
         </div>
-
+      <div class="content">
+        
+      </div>
     </main>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  data () {
-    return {
-      posts: null,
-      endpoint: 'http://107da2cd6f43.ngrok.io/',
-    }
-  },
-
-  created() {
-    this.getAllPosts();
-  },
-
-  methods: {
-    getAllPosts() {
-      axios.get(this.endpoint)
-        .then(response => {
-          this.posts = response.data;
-        })
-        .catch(error => {
-          console.log('-----error-------');
-          console.log(error);
-        })
+  import axios from 'axios'
+  export default {
+    data () {
+      return {
+        posts: [],
+        endpoint: 'http://3612d488699a.ngrok.io/posts/',
+      }
+    },
+    created() {
+      this.getAllPosts();
+    },
+    methods: {
+      getAllPosts() {
+        axios.get(this.endpoint)
+          .then(response => {
+            this.posts = response.data;
+          })
+          .catch(error => {
+            console.log('-----error-------');
+            console.log(error);
+          })
+      }
     }
   }
-}
 </script>
 
 <style lang="css">
