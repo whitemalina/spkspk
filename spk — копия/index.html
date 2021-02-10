@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURPK</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/datepicker.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="assets/js/datepicker.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        
+        <div class="header-item ">
+            <div class="header-profile">
+                <img src="assets/img/profile-ico.svg" alt="profile">
+                <h3>Иванов п.п</h3>
+            </div>
+        </div>
+
+        <div class="header-item">
+            <div class="header-form">
+                <form action="#">
+                    <div class="form-period">
+                        <p class="calendarIcon"><input type='text' class="datepicker-here" data-position="right top" placeholder="Начало периода"/></p>
+                        <span></span>
+                        <p class="calendarIcon"><input type='text' class="datepicker-here" data-position="right top" placeholder="Конец периода"/></p>
+                    </div>
+                    <div class="form-search">
+                        <p class="searchIcon"><input type="text" name="search" id="search" placeholder="Поиск по ключевым словам"></p>
+                    </div>
+                    <div class="form-status">
+                        <p class="questionIcon">
+                            <select name="status" id="status" >
+                                <option  value="Статус заявки">Статус заявки</option>
+                                <option value="Ожидание">Ожидание</option>
+                                <option value="Выполняеться">Выполняеться</option>
+                                <option value="Готово">Готово</option>
+                            </select>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="header-item">
+            <div class="header-logo">
+                <img src="assets/img/spk logo.svg" alt="">
+            </div>
+        </div>
+        
+    </header>
+
+    <main>
+
+        <div class='modal' id='modal1'>
+            <div class="modal-tittle">
+                <label>Добавление новой заявки</label>
+            </div>
+            <div class='content'>
+                <span>Выберите СП</span>
+                <div class="sp">
+                    <select name="sp" id="sp">
+                    <option value="СП-1">СП-1</option>
+                    <option value="СП-2">СП-2</option>
+                    <option value="СП-3">СП-3</option>
+                    <option value="СП-4">СП-4</option>
+                    <option value="СП-5">СП-5</option>
+                </select>
+                </div>
+                <span>Сотрудник</span>
+                <div class="sotrudnik">
+                    <input type="text">
+                </div>
+                <span>Кабинет</span>
+                <div class="kabinet">
+                    <input type="number">
+                </div>
+                <span>Проблема</span>
+                <div class="problem">
+                    <textarea  name="problem" id="problem" cols="30" rows="4"></textarea>
+                </div>
+            </div>	
+            <div class="send-req">
+                <button data-modal="#modal1" class="close-modal">Отправить</button>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="main-tittle">
+                <div class="main-tittle-item">
+                    <p>Дата подачи</p>
+                </div>
+                <div class="main-tittle-item">
+                    <p>Сотрудник</p>
+                </div>
+                <div class="main-tittle-item">
+                    <p>Номер кабинета</p>
+                </div>
+                <div class="main-tittle-item">
+                    <p>Проблема</p>
+                </div>
+                <div class="main-tittle-item">
+                    <p>Статус</p>
+                </div>
+            </div>
+            <div class="new-request">
+                <button class='new-r open-modal'  data-modal="#modal1">Добавить новую заявку <img class="plus2" src="assets/img/plus 2.svg" alt=""></button>
+            </div>
+            <div class="main-request">
+                <div class="main-request-item">
+                    <p>16.07.2021</p>
+                </div>
+                <div class="main-request-item">
+                    <p>Иванов И.И</p>
+                </div>
+                <div class="main-request-item">
+                    <p>44</p>
+                </div>
+                <div class="main-request-item">
+                    <p>Компьютер 3 не включается. Пропал интернет</p>
+                </div>
+                <div class="main-request-item-progress">
+                    <p>Выполняется </p>
+                    <img class="rot" src="assets/img/progress.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script  src="assets/js/modal.js"></script>
+    <script  src="assets/js/script.js"></script>
+</body>
+
+</html>
