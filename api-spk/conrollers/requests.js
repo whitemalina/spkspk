@@ -46,7 +46,7 @@ todo.getById = (req, res) => {
     (err, rows, fields) => {
       if (!err) {
         console.log(rows);
-        res.send(rows);
+        res.send(rows[0]);
       } else console.log(err);
     }
   );
@@ -59,7 +59,7 @@ todo.del = (req, res) => {
     [req.params.id],
     (err, rows, fields) => {
       if (!err) {
-        console.log(rows);
+        console.log(rows[0]);
         res.send(`Deleted request with id:${req.params.id}  success`);
       } else console.log(err);
     }
@@ -74,7 +74,7 @@ todo.update = (req, res) => {
     [id],
     (err, rows, fields) => {
       if (!err) {
-        console.log(rows);
+        console.log(rows[0]);
 
         if (req.body.status)
           mysqlcon.query(

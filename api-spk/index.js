@@ -7,14 +7,20 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use("/requests", requestsRoutes);
 
 app.get("/", (req, res) => {
-  console.log("[TEST]");
+  console.log("[SUCCESS]");
   mysqlcon.query("SELECT * FROM requests", (err, rows, fields) => {
     if (!err) {
       console.log(rows);
-      res.send(rows);
+      res.send("ALL OKAY");
     } else console.log(err);
   });
 });
