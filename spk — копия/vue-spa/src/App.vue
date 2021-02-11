@@ -1,142 +1,203 @@
 <template>
   <div id="app">
-    
     <header>
-        
-        <div class="header-item ">
-            <div class="header-profile">
-                <img src="assets/img/profile-ico.svg" alt="profile">
-                <h3>Иванов п.п</h3>
-            </div>
+      <div class="header-item">
+        <div class="header-profile">
+          <img src="assets/img/profile-ico.svg" alt="profile" />
+          <h3>Иванов п.п</h3>
         </div>
+      </div>
 
-        <div class="header-item">
-            <div class="header-form">
-                <form action="#">
-                    <div class="form-period">
-                        <p class="calendarIcon"><input type='text' class="datepicker-here" data-position="right top" placeholder="Начало периода"/></p>
-                        <span></span>
-                        <p class="calendarIcon"><input type='text' class="datepicker-here" data-position="right top" placeholder="Конец периода"/></p>
-                    </div>
-                    <div class="form-search">
-                        <p class="searchIcon"><input type="text" name="search" id="search" placeholder="Поиск по ключевым словам"></p>
-                    </div>
-                    <div class="form-status">
-                        <p class="questionIcon">
-                            <select name="status" id="status" >
-                                <option  value="Статус заявки">Статус заявки</option>
-                                <option value="Ожидание">Ожидание</option>
-                                <option value="Выполняеться">Выполняеться</option>
-                                <option value="Готово">Готово</option>
-                            </select>
-                        </p>
-                    </div>
-                </form>
+      <div class="header-item">
+        <div class="header-form">
+          <form action="#">
+            <div class="form-period">
+              <p class="calendarIcon">
+                <input
+                  type="text"
+                  class="datepicker-here"
+                  data-position="right top"
+                  placeholder="Начало периода"
+                />
+              </p>
+              <span></span>
+              <p class="calendarIcon">
+                <input
+                  type="text"
+                  class="datepicker-here"
+                  data-position="right top"
+                  placeholder="Конец периода"
+                />
+              </p>
             </div>
+            <div class="form-search">
+              <p class="searchIcon">
+                <input
+                  type="text"
+                  name="search"
+                  id="search"
+                  placeholder="Поиск по ключевым словам"
+                />
+              </p>
+            </div>
+            <div class="form-status">
+              <p class="questionIcon">
+                <select name="status" id="status">
+                  <option value="Статус заявки">Статус заявки</option>
+                  <option value="Ожидание">Ожидание</option>
+                  <option value="Выполняеться">Выполняеться</option>
+                  <option value="Готово">Готово</option>
+                </select>
+              </p>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <div class="header-item">
-            <div class="header-logo">
-                <img src="assets/img/spk logo.svg" alt="">
-            </div>
+      <div class="header-item">
+        <div class="header-logo">
+          <img src="assets/img/spk logo.svg" alt="" />
         </div>
-        
+      </div>
     </header>
 
     <main>
-
-        <div class='modal' id='modal1'>
-            <div class="modal-tittle">
-                <label>Добавление новой заявки</label>
-            </div>
-            <div class='content'>
-                <span>Выберите СП</span>
-                <div class="sp">
-                    <select name="sp" id="sp">
-                    <option value="СП-1">СП-1</option>
-                    <option value="СП-2">СП-2</option>
-                    <option value="СП-3">СП-3</option>
-                    <option value="СП-4">СП-4</option>
-                    <option value="СП-5">СП-5</option>
-                </select>
-                </div>
-                <span>Сотрудник</span>
-                <div class="sotrudnik">
-                    <input type="text">
-                </div>
-                <span>Кабинет</span>
-                <div class="kabinet">
-                    <input type="number">
-                </div>
-                <span>Проблема</span>
-                <div class="problem">
-                    <textarea  name="problem" id="problem" cols="30" rows="4"></textarea>
-                </div>
-            </div>	
-            <div class="send-req">
-                <button data-modal="#modal1" class="close-modal">Отправить</button>
-            </div>
+      <div class="modal" id="modal1">
+        <div class="modal-tittle">
+          <label>Добавление новой заявки</label>
         </div>
-        <div class="main-container">
-
-            <div class="main-tittle">
-                <div class="main-tittle-item">
-                    <p>Дата подачи</p>
-                </div>
-                <div class="main-tittle-item">
-                    <p>Сотрудник</p>
-                </div>
-                <div class="main-tittle-item">
-                    <p>Номер кабинета</p>
-                </div>
-                <div class="main-tittle-item">
-                    <p>Проблема</p>
-                </div>
-                <div class="main-tittle-item">
-                    <p>Статус</p>
-                </div>
-            </div>
-            <div class="new-request">
-                <button class='new-r open-modal'  data-modal="#modal1">Добавить новую заявку <img class="plus2" src="assets/img/plus 2.svg" alt=""></button>
-            </div>
-        <router-view
-                v-for="post in posts"
-                v-bind="post"
-                :key="post.id"
-        ></router-view>
+        <div class="content">
+          <span>Выберите СП</span>
+          <div class="sp">
+            <select name="sp" id="sp">
+              <option value="СП-1">СП-1</option>
+              <option value="СП-2">СП-2</option>
+              <option value="СП-3">СП-3</option>
+              <option value="СП-4">СП-4</option>
+              <option value="СП-5">СП-5</option>
+            </select>
+          </div>
+          <span>Сотрудник {{ worker }}</span>
+          <div class="sotrudnik">
+            <input v-model="worker" type="text" />
+          </div>
+          <span>Кабинет</span>
+          <div class="kabinet">
+            <input v-model="cab" type="number" />
+          </div>
+          <span>Проблема</span>
+          <div class="problem">
+            <textarea
+              v-model="problemo"
+              name="problem"
+              id="problem"
+              cols="30"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="send-req">
+            <br />
+            <button
+              v-on:click="postPost"
+              type="submit"
+              data-modal="#modal1"
+              class="close-modal"
+            >
+              Отправить
+            </button>
+          </div>
         </div>
-      <div class="content">
-        
       </div>
+      <div class="main-container">
+        <div class="main-tittle">
+          <div class="main-tittle-item">
+            <p>Дата подачи</p>
+          </div>
+          <div class="main-tittle-item">
+            <p>Сотрудник</p>
+          </div>
+          <div class="main-tittle-item">
+            <p>Номер кабинета</p>
+          </div>
+          <div class="main-tittle-item">
+            <p>Проблема</p>
+          </div>
+          <div class="main-tittle-item">
+            <p>Статус</p>
+          </div>
+        </div>
+        <div class="new-request">
+          <button class="new-r open-modal" data-modal="#modal1">
+            Добавить новую заявку
+            <img class="plus2" src="assets/img/plus 2.svg" alt="" />
+          </button>
+        </div>
+        <div class="post-container">
+          <router-view
+            v-for="post in posts"
+            v-bind="post"
+            :key="post.id"
+          ></router-view>
+        </div>
+      </div>
+      <div class="content"></div>
     </main>
   </div>
 </template>
 
 <script>
-  import axios from 'axios'
-  export default {
-    data () {
-      return {
-        posts: [],
-        endpoint: 'http://3612d488699a.ngrok.io/posts/',
-      }
+import axios from "axios";
+const date = require("date-and-time");
+export default {
+  data() {
+    return {
+      posts: [],
+      endpoint: "http://localhost:3000/requests/",
+    };
+  },
+  created() {
+    this.getAllPosts();
+  },
+  methods: {
+    postPost: function () {
+      var now = new Date()
+      now = date.format(now, 'YYYY/MM/DD HH:mm:ss')
+      axios
+        .post(this.endpoint, {
+          worker: `${this.worker}`,
+          cab: `${this.cab}`,
+          problem: `${this.problemo}`,
+          status: 1,
+          date: `${now}`,
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log("-------error-------");
+          console.log(error);
+        });
+
+      location.reload()
     },
-    created() {
-      this.getAllPosts();
+
+    getAllPosts() {
+      axios
+        .get(this.endpoint)
+        .then((response) => {
+          this.posts = response.data;
+        })
+        .catch((error) => {
+          console.log("-------error-------");
+          console.log(error);
+        });
     },
-    methods: {
-      getAllPosts() {
-        axios.get(this.endpoint)
-          .then(response => {
-            this.posts = response.data;
-          })
-          .catch(error => {
-            console.log('-----error-------');
-            console.log(error);
-          })
-      }
-    }
-  }
+  },
+};
+function gegeg() {
+  console.log(this.worker);
+}
+// setInterval(gegeg, 1000)
 </script>
 
 <style lang="css">
@@ -154,7 +215,7 @@ header {
   align-items: center;
   height: 75px;
   padding: 0 62px;
-  background: #23539C;
+  background: #23539c;
 }
 
 .header-item {
@@ -268,7 +329,7 @@ select {
 .form-status select {
   appearance: none;
   padding-right: 40px;
-  transition: .3s all;
+  transition: 0.3s all;
 }
 
 .calendarIcon {
@@ -276,7 +337,7 @@ select {
 }
 
 .calendarIcon::before {
-  content: '';
+  content: "";
   height: 11px;
   width: 11px;
   background: url("assets/img/calendar.svg") center no-repeat;
@@ -291,7 +352,7 @@ select {
 }
 
 .searchIcon::before {
-  content: '';
+  content: "";
   height: 11px;
   width: 11px;
   background: url("assets/img/search.svg") center no-repeat;
@@ -306,9 +367,9 @@ select {
 }
 
 .questionIcon::before {
-  content: '';
-  height: 12px;
-  width: 12px;
+  content: "";
+  height: 13px;
+  width: 13px;
   background: url("assets/img/question.svg") center no-repeat;
   position: absolute;
   right: 10px;
@@ -317,13 +378,13 @@ select {
 }
 
 .form-status select:focus {
-  color: #23539C;
+  color: #23539c;
 }
 
 .main-tittle {
   width: 926px;
   height: 50px;
-  background: #23539C;
+  background: #23539c;
   border-radius: 8px;
   margin-top: 37px;
   display: flex;
@@ -361,8 +422,8 @@ select {
   width: 926px;
   margin-top: 7px;
   height: 62px;
-  background: #FFFFFF;
-  border: 1px solid #3F69A9;
+  background: #ffffff;
+  border: 1px solid #3f69a9;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -389,7 +450,7 @@ select {
 }
 
 .main-request-item-progress {
-  color: #23539C;
+  color: #23539c;
   font-size: 13px;
   height: 27px;
   width: 25%;
@@ -407,10 +468,10 @@ select {
 }
 
 .new-r {
-  color: #23539C;
+  color: #23539c;
   width: 926px;
   height: 50px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid rgba(35, 83, 156, 0.87);
   box-sizing: border-box;
   border-radius: 8px;
@@ -418,10 +479,11 @@ select {
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .new-r:hover {
-  background: #23539C;
+  background: #23539c;
   color: white;
 }
 
@@ -501,7 +563,7 @@ select {
   color: white;
   width: 196px;
   height: 33px;
-  background: #23539C;
+  background: #23539c;
   border-radius: 8px;
 }
 
@@ -522,11 +584,10 @@ img.rot {
   box-sizing: border-box;
 }
 
-
 .btn {
   padding: 20px 50px;
   display: inline-block;
-  background: #EF233C;
+  background: #ef233c;
   color: white;
   text-decoration: none;
   transition: 0.35s ease-in-out;
@@ -592,22 +653,28 @@ img.rot {
 .overlay .modal .title {
   margin-top: 0;
 }
-.modal-tittle{
-  background-color: #23539C;
+.modal-tittle {
+  background-color: #23539c;
   color: white;
   height: 42px;
   display: flex;
   align-items: center;
-
 }
-.modal-tittle label{
+.modal-tittle label {
   margin-left: 13px;
 }
-.content{
+.content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 34px 10px 10px 94px;
+}
+
+.statusWait {
+  color: #959595 !important;
+}
+.statusReady {
+  color: #06ac2a !important;
 }
 </style>
