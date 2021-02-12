@@ -29,6 +29,7 @@ new Vue({
   el: "#app",
   data: {
     worker: null,
+    sp: null,
     cab: null,
     problemo: null
   },

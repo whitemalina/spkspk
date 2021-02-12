@@ -10,7 +10,7 @@
       <div class="main-request-item">
         <p>{{ post.cab }}</p>
       </div>
-      <div class="main-request-item ">
+      <div class="main-request-item problem">
         <p>{{ post.problem }}</p>
       </div>
       <div class="main-request-item-progress">
@@ -100,4 +100,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+
+</style>

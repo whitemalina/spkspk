@@ -69,13 +69,14 @@
         <div class="content">
           <span>Выберите СП</span>
           <div class="sp">
-            <select name="sp" id="sp">
-              <option value="СП-1">СП-1</option>
-              <option value="СП-2">СП-2</option>
-              <option value="СП-3">СП-3</option>
-              <option value="СП-4">СП-4</option>
-              <option value="СП-5">СП-5</option>
+            <select v-model="sp" type="text" >
+              <option>СП-1</option>
+              <option>СП-2</option>
+              <option>СП-3</option>
+              <option>СП-4</option>
+              <option>СП-5</option>
             </select>
+          <span>Выбрано: {{ sp }}</span>
           </div>
           <span>Сотрудник {{ worker }}</span>
           <div class="sotrudnik">
@@ -151,6 +152,7 @@ const date = require("date-and-time");
 export default {
   data() {
     return {
+      sp: "СП-1",
       posts: [],
       endpoint: "http://localhost:3000/requests/",
     };
@@ -164,6 +166,7 @@ export default {
       now = date.format(now, 'YYYY/MM/DD HH:mm:ss')
       axios
         .post(this.endpoint, {
+          sp: 2,
           worker: `${this.worker}`,
           cab: `${this.cab}`,
           problem: `${this.problemo}`,
@@ -208,7 +211,14 @@ function gegeg() {
   font-family: Roboto;
   outline: none;
 }
-
+.main-request-item p{
+  overflow: none;
+  word-break: normal;
+  max-width: 60%;
+}
+.problem{
+  overflow: auto;
+}
 header {
   display: flex;
   justify-content: space-between;
