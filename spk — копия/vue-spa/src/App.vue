@@ -166,12 +166,12 @@ export default {
       now = date.format(now, 'YYYY/MM/DD HH:mm:ss')
       axios
         .post(this.endpoint, {
-          sp: 2,
           worker: `${this.worker}`,
           cab: `${this.cab}`,
           problem: `${this.problemo}`,
-          status: 1,
+          status: `${this.cab}`,
           date: `${now}`,
+          sp: `${this.cab}`,
         })
         .then((response) => {
           console.log(response.data);

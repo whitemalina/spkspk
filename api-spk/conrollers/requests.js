@@ -10,7 +10,7 @@ todo.create = (req, res) => {
   const request = { ...input, id: uuidv4() };
   const requestID = uuidv4();
   mysqlcon.query(
-    "INSERT INTO requests (`id`, `worker`, `cab`, `problem`, `status`, `date`) VALUES (?, ?, ?, ?, ?, ?)",
+    "INSERT INTO requests (`id`, `worker`, `cab`, `problem`, `status`, `date`, `sp`) VALUES (?, ?, ?, ?, ?, ?)",
     [
       requestID,
       request.worker,
@@ -18,6 +18,7 @@ todo.create = (req, res) => {
       request.problem,
       request.status,
       request.date,
+      request.sp,
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -111,6 +112,13 @@ todo.update = (req, res) => {
               if (err) console.log(err);
             }
           );
+        if (req.body.sp)
+          mysqlcon.query(
+            `UPDATE requests SET sp = ${req.body.sp} WHERE id="${id}"`,
+            (err, rows, fields) => {
+              if (err) console.log(err);
+            }
+        );
 
         res.send(`Updated request with id:${req.params.id}  success`);
       } else console.log(err);
