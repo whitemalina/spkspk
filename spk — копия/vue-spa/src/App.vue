@@ -154,6 +154,7 @@ export default {
     return {
       sp: "СП-1",
       posts: [],
+      status: "1",
       endpoint: "http://localhost:3000/requests/",
     };
   },
@@ -169,9 +170,9 @@ export default {
           worker: `${this.worker}`,
           cab: `${this.cab}`,
           problem: `${this.problemo}`,
-          status: `${this.cab}`,
+          status: `${this.status}`,
           date: `${now}`,
-          sp: `${this.cab}`,
+          sp: `${this.sp}`,
         })
         .then((response) => {
           console.log(response.data);

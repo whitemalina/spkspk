@@ -31,7 +31,8 @@ new Vue({
     worker: null,
     sp: null,
     cab: null,
-    problemo: null
+    problemo: null,
+    status: 1,
   },
   render: h => h(App),
   router

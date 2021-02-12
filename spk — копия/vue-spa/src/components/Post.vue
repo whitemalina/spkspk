@@ -8,7 +8,7 @@
         <p>{{ post.worker }}</p>
       </div>
       <div class="main-request-item">
-        <p>{{ post.cab }}</p>
+        <p>{{ post.cab }}  {{ post.sp }}</p>
       </div>
       <div class="main-request-item problem">
         <p>{{ post.problem }}</p>
